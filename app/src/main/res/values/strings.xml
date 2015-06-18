@@ -1,14 +1,26 @@
 <resources>
     <string name="app_name">GotaDAgua</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_main">Resumo</string>
+    <string name="title_bill">Minha Conta</string>
+    <string name="title_tips">Dicas</string>
+    <string name="title_reservatory">Reservatórios</string>
+    <string name="title_weather">Prev. Tempo</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Abrir menu</string>
+    <string name="navigation_drawer_close">Fechar menu</string>
 
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_reading">Hidrometro</string>
+
+    <!--<array name="nav_drawer_icons">-->
+        <!--<item>@drawable/ic_home</item>-->
+        <!--<item>@drawable/ic_people</item>-->
+        <!--<item>@drawable/ic_photos</item>-->
+        <!--<item>@drawable/ic_communities</item>-->
+        <!--<item>@drawable/ic_pages</item>-->
+        <!--<item>@drawable/ic_whats_hot</item>-->
+    <!--</array>-->
 </resources>

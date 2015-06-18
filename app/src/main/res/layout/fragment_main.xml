@@ -6,11 +6,141 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity$PlaceholderFragment">
+                tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- A CardView that contains a TextView -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_hidrometro"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/water"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:src="@drawable/ic_settings_input_svideo_white_36dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:alpha="0.7"/>
+                        <TextView
+                            android:layout_marginLeft="15dp"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hidrometro"
+                            android:textColor="@android:color/white"/>
+                    </LinearLayout>
+                    <TableLayout
+                        android:id="@+id/vwTableReadings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:shrinkColumns="*"
+                        android:stretchColumns="*">
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16sp"
+                                android:text="Mês Passado"/>
+
+                            <TextView
+                                android:id="@+id/txtLastMonthReading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="right"
+                                android:textSize="16sp"
+                                android:text=""/>
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16sp"
+                                android:text="Leitura Atual"/>
+
+                            <TextView
+                                android:id="@+id/txtLastReading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="right"
+                                android:textSize="16sp"
+                                android:text=""/>
+                        </TableRow>
+                    </TableLayout>
+                    <LinearLayout
+                        android:id="@+id/vwNoReadings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Ainda não foi feita nenhuma leitura do hidrometro"/>
+                    </LinearLayout>
+                    <View style="@style/CardSeparator"/>
+                    <LinearLayout
+                        android:id="@+id/btnAddReading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="10dp">
+                        <ImageView
+                            android:src="@drawable/ic_add_black_36dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp"
+                            android:text="Adicionar nova leitura"/>
+                    </LinearLayout>
+                    <View style="@style/CardSeparator"/>
+                    <LinearLayout
+                        android:id="@+id/btnViewReadingHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="10dp">
+                        <ImageView
+                            android:src="@drawable/ic_arrow_forward_black_36dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp"
+                            android:text="Ver Histórico"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
