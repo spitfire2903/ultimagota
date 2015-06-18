@@ -2,7 +2,6 @@ package br.com.ricardonm.gotadagua.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +54,8 @@ public class MainFragment extends BaseFragment {
                 new AddNewReadingOnClickListener());
         btnViewReadingHistory.setOnClickListener(new ViewReadingHistoryOnClickListener());
 
-        task = new LoadLastReadingTask(this);
-        task.execute();
+        //task = new LoadLastReadingTask(this);
+        //task.execute();
 
         return rootView;
     }
@@ -118,8 +117,6 @@ public class MainFragment extends BaseFragment {
                     } else {
                         value = Double.parseDouble(edtNewReading.getText().toString());
 
-                        Log.e(">> APPPP", ">>> lastReading "+MainFragment.this.lastReading.getValue
-                                ());
                         if (MainFragment.this.lastReading != null &&
                                 MainFragment.this.lastReading.getValue() < value) {
                             result = false;

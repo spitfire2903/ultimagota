@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,7 +18,6 @@ import android.view.MenuItem;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
@@ -257,8 +257,9 @@ public class MainActivity extends ActionBarActivity
                 LoadDeviceUserTask task = null;
 
                 if(e == null) {
-                    deviceToken = (String) ParseInstallation.getCurrentInstallation().get
-                            ("deviceToken");
+                    //deviceToken = (String) ParseInstallation.getCurrentInstallation().get("deviceToken");
+                    deviceToken = Settings.Secure.getString(getApplicationContext()
+                            .getContentResolver(), Settings.Secure.ANDROID_ID);
                     task = new LoadDeviceUserTask(MainActivity.this, deviceToken);
                     task.execute();
                 }
@@ -350,9 +351,10 @@ public class MainActivity extends ActionBarActivity
             list = deviceUser.getLocations();
 
             list.add(new LocationHistory(userLocation));
+
+            deviceUser.saveInBackground();
         }
 
-        deviceUser.saveInBackground();
     }
 
     private String getTitleFromFragmentIndex(FragmentIndex fragmentIdx){
