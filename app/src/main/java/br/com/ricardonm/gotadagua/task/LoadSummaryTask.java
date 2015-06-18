@@ -31,12 +31,15 @@ public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
 
         chartMaxValue = 0d;
 
-        for (Reading reading : allReadings){
-            chartMaxValue = (chartMaxValue > reading.getRelativeValue() ? chartMaxValue : reading
-                    .getRelativeValue() + 10);
+        if (allReadings != null) {
+            for (Reading reading : allReadings) {
+                chartMaxValue = (chartMaxValue > reading.getRelativeValue() ? chartMaxValue : reading
+                        .getRelativeValue() + 10);
+            }
         }
 
-        chartMaxValue = (chartMaxValue > lastGoal.getGoal() ? chartMaxValue : lastGoal.getGoal() + 10);
+        chartMaxValue = (lastGoal != null && chartMaxValue > lastGoal.getGoal() ? chartMaxValue :
+                lastGoal.getGoal() + 10);
 
         return super.doInBackground();
     }
