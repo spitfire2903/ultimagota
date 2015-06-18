@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.ricardonm.gotadagua.model.Reading;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class ReadingBO {
     public static Reading getLastReading(){

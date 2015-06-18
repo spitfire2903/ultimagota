@@ -14,7 +14,7 @@ import br.com.ricardonm.gotadagua.R;
 import br.com.ricardonm.gotadagua.model.ReservatoryCapacity;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class ReservatoryView extends LinearLayout{
     private ReservatoryCapacity capacity;

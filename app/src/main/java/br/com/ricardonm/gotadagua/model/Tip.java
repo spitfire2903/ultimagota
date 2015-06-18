@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class Tip extends SugarRecord<Tip> {
     private String title;

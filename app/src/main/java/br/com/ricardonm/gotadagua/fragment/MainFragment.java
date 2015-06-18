@@ -33,7 +33,7 @@ import br.com.ricardonm.gotadagua.task.LoadSummaryTask;
 import br.com.ricardonm.gotadagua.task.SaveDataTask;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class MainFragment extends BaseFragment {
 
@@ -50,6 +50,8 @@ public class MainFragment extends BaseFragment {
     public Reading lastReading;
     public Goal lastGoal;
     public List<Reading> allReadings;
+
+    public Double chartMaxValue;
 
     private LineChart chtConsumo;
 
@@ -75,6 +77,8 @@ public class MainFragment extends BaseFragment {
 
         task = new LoadSummaryTask(this);
         task.execute();
+
+        this.refreshChart();
 
         return rootView;
     }
@@ -104,7 +108,11 @@ public class MainFragment extends BaseFragment {
 
         leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
 
-        leftAxis.setAxisMaxValue(120f);
+        if (chartMaxValue == null){
+            chartMaxValue = 90d;
+        }
+
+        leftAxis.setAxisMaxValue(chartMaxValue.floatValue());
         leftAxis.setAxisMinValue(0f);
         leftAxis.setStartAtZero(true);
         //leftAxis.setYOffset(20f);
@@ -157,8 +165,9 @@ public class MainFragment extends BaseFragment {
         // create a data object with the datasets
         data = new LineData(xVals, dataSets);
 
-        // set data
-        chtConsumo.setData(data);
+        if (allReadings != null || lastGoal != null) {
+            chtConsumo.setData(data);
+        }
     }
 
     public void refreshAllReading(List<Reading> readings){
@@ -176,6 +185,12 @@ public class MainFragment extends BaseFragment {
             this.lastReading = reading;
             this.allReadings.add(reading);
 
+            if (chartMaxValue != null && reading.getRelativeValue() > chartMaxValue){
+                chartMaxValue = reading.getRelativeValue() + 10;
+            }
+
+            this.refreshChart();
+
             vwNoReading.setVisibility(View.GONE);
             vwTableReading.setVisibility(View.VISIBLE);
 
@@ -189,6 +204,10 @@ public class MainFragment extends BaseFragment {
     public void refreshLastGoal(Goal goal){
         if (goal != null){
             this.lastGoal = goal;
+
+            if (chartMaxValue != null && goal.getGoal() > chartMaxValue.longValue()){
+                chartMaxValue = (double) goal.getGoal() + 10;
+            }
 
             this.refreshChart();
         }
@@ -260,11 +279,17 @@ public class MainFragment extends BaseFragment {
                     if (result) {
                         reading = new Reading();
 
+                        if (MainFragment.this.lastReading != null) {
+                            reading.setLastValue(MainFragment.this.lastReading.getValue());
+                            reading.setLastDate(MainFragment.this.lastReading.getCreatedAt());
+                        } else {
+                            reading.setLastValue(0d);
+                        }
+
                         reading.setValue(value);
 
                         task = new SaveDataTask(MainFragment.this, reading);
                         task.execute();
-                        //reading.saveInBackground();
 
                         MainFragment.this.refreshLastReading(reading);
                     } else {

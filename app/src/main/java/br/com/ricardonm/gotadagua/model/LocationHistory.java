@@ -7,7 +7,7 @@ import com.orm.SugarRecord;
 import java.util.Date;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class LocationHistory extends SugarRecord<LocationHistory> {
 

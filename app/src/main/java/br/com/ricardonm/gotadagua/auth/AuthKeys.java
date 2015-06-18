@@ -1,7 +1,7 @@
 package br.com.ricardonm.gotadagua.auth;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class AuthKeys {
     public static String YAHOO_CONSUMER_KEY =

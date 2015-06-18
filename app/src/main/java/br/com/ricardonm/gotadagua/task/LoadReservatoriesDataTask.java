@@ -7,7 +7,7 @@ import br.com.ricardonm.gotadagua.fragment.ReservatoryFragment;
 import br.com.ricardonm.gotadagua.model.ReservatoryCapacity;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class LoadReservatoriesDataTask extends BaseTask<ReservatoryFragment, Void, Void, Void> {
     private List<ReservatoryCapacity> reservatoriesCapacity;

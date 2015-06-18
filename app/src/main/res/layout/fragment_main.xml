@@ -158,7 +158,7 @@
                         android:background="@color/water"
                         android:orientation="horizontal">
                         <ImageView
-                            android:src="@drawable/ic_settings_input_svideo_white_36dp"
+                            android:src="@drawable/ic_trending_up_white_36dp"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center_vertical"

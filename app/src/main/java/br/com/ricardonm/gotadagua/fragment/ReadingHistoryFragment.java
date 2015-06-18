@@ -9,7 +9,7 @@ import br.com.ricardonm.gotadagua.BaseFragment;
 import br.com.ricardonm.gotadagua.R;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class ReadingHistoryFragment extends BaseFragment {
     @Override

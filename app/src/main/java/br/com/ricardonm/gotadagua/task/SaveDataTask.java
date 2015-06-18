@@ -5,7 +5,7 @@ import com.orm.SugarRecord;
 import br.com.ricardonm.gotadagua.BaseFragment;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class SaveDataTask extends BaseTask<BaseFragment, Void, Void, Void> {
     private SugarRecord sugarObj;

@@ -23,7 +23,7 @@ import br.com.ricardonm.gotadagua.task.LoadReservatoriesDataTask;
 import br.com.ricardonm.gotadagua.view.ReservatoryView;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class ReservatoryFragment extends BaseFragment {
 

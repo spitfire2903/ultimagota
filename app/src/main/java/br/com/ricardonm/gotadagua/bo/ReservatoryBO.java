@@ -14,7 +14,7 @@ import br.com.ricardonm.gotadagua.model.ReservatoryCapacity;
 import br.com.ricardonm.gotadagua.wrapper.WrapperUtil;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class ReservatoryBO {
     public static String SABESP_URL = "https://sabesp-api.herokuapp.com/v2";

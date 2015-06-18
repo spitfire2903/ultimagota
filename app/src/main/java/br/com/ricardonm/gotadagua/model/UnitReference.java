@@ -3,7 +3,7 @@ package br.com.ricardonm.gotadagua.model;
 import com.orm.SugarRecord;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 public class UnitReference extends SugarRecord<UnitReference> {
     private String name;

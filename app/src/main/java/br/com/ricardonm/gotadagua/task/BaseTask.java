@@ -6,7 +6,7 @@ import br.com.ricardonm.gotadagua.BaseFragment;
 import br.com.ricardonm.gotadagua.MainActivity;
 
 /**
- * Created by ricardomiranda on 17/06/15.
+ * Created by ricardomiranda.
  */
 /**
  * Base asynchronous thread pool manager.<br />

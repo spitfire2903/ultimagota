@@ -9,12 +9,13 @@ import br.com.ricardonm.gotadagua.model.Goal;
 import br.com.ricardonm.gotadagua.model.Reading;
 
 /**
- * Created by ricardomiranda on 18/06/15.
+ * Created by ricardomiranda.
  */
 public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
     private Reading lastReading;
     private Goal lastGoal;
     private List<Reading> allReadings;
+    private Double chartMaxValue;
 
     public LoadSummaryTask(MainFragment fragment){
         super(fragment);
@@ -27,6 +28,15 @@ public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
         lastReading = ReadingBO.getLastReading();
         allReadings = ReadingBO.getAllReading();
         lastGoal = GoalBO.getLastGoal();
+
+        chartMaxValue = 0d;
+
+        for (Reading reading : allReadings){
+            chartMaxValue = (chartMaxValue > reading.getRelativeValue() ? chartMaxValue : reading
+                    .getRelativeValue() + 10);
+        }
+
+        chartMaxValue = (chartMaxValue > lastGoal.getGoal() ? chartMaxValue : lastGoal.getGoal() + 10);
 
         return super.doInBackground();
     }
@@ -48,6 +58,7 @@ public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void result) {
+        this.getParent().chartMaxValue = chartMaxValue;
         this.getParent().refreshAllReading(allReadings);
         this.getParent().refreshLastReading(lastReading);
         this.getParent().refreshLastGoal(lastGoal);
