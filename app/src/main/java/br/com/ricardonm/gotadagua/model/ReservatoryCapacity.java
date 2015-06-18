@@ -1,53 +1,69 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
+
+import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("ReservatoryCapacity")
-public class ReservatoryCapacity extends ParseObject {
-    public ReservatoryCapacity(){}
+public class ReservatoryCapacity extends SugarRecord<ReservatoryCapacity> {
+    private Double value;
+    private Double volume;
+    private Double percChange;
+    private Reservatory reservatory;
+    private DeviceUser deviceUser;
+    private Date createdAt;
 
-    public void setValue(Double value){
-        put("value", value);
+    public ReservatoryCapacity() {
+        this.createdAt = new Date();
     }
 
-    public void setVolume(Double volume){
-        put("volume", volume);
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setPercChange(Double percChange){
-        put("percChange", percChange);
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Double getValue(){
-        return getDouble("value");
+    public Double getValue() {
+        return value;
     }
 
-    public Double getVolume(){
-        return getDouble("volume");
+    public void setValue(Double value) {
+        this.value = value;
     }
 
-    public Double getPercChange(){
-        return getDouble("percChange");
+    public Double getVolume() {
+        return volume;
     }
 
-    public void setReservatory(Reservatory reservatory){
-        put("reservatory", reservatory);
+    public void setVolume(Double volume) {
+        this.volume = volume;
     }
 
-    public Reservatory getReservatory(){
-        return (Reservatory) get("reservatory");
+    public Double getPercChange() {
+        return percChange;
     }
 
-
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
+    public void setPercChange(Double percChange) {
+        this.percChange = percChange;
     }
 
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
+    public Reservatory getReservatory() {
+        return reservatory;
+    }
+
+    public void setReservatory(Reservatory reservatory) {
+        this.reservatory = reservatory;
+    }
+
+    public DeviceUser getDeviceUser() {
+        return deviceUser;
+    }
+
+    public void setDeviceUser(DeviceUser deviceUser) {
+        this.deviceUser = deviceUser;
     }
 }

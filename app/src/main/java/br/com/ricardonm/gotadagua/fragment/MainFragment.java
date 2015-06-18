@@ -19,6 +19,7 @@ import br.com.ricardonm.gotadagua.MainActivity;
 import br.com.ricardonm.gotadagua.R;
 import br.com.ricardonm.gotadagua.model.Reading;
 import br.com.ricardonm.gotadagua.task.LoadLastReadingTask;
+import br.com.ricardonm.gotadagua.task.SaveDataTask;
 
 /**
  * Created by ricardomiranda on 17/06/15.
@@ -54,16 +55,24 @@ public class MainFragment extends BaseFragment {
                 new AddNewReadingOnClickListener());
         btnViewReadingHistory.setOnClickListener(new ViewReadingHistoryOnClickListener());
 
-        //task = new LoadLastReadingTask(this);
-        //task.execute();
+        task = new LoadLastReadingTask(this);
+        task.execute();
 
         return rootView;
     }
 
     public void refreshLastReading(Reading reading){
-        this.lastReading = reading;
+        if (reading != null) {
+            this.lastReading = reading;
 
-        setReading(reading, txtLastReading);
+            vwNoReading.setVisibility(View.GONE);
+            vwTableReading.setVisibility(View.VISIBLE);
+
+            setReading(reading, txtLastReading);
+        } else{
+            vwNoReading.setVisibility(View.VISIBLE);
+            vwTableReading.setVisibility(View.GONE);
+        }
     }
 
     public void setReading(Reading reading, TextView textView){
@@ -106,6 +115,7 @@ public class MainFragment extends BaseFragment {
                     Reading reading = null;
                     Double value = null;
                     String errorMessage = null;
+                    SaveDataTask task = null;
 
                     edtNewReading = (EditText) dialog.findViewById(R.id.edtNewReading);
                     iptNewReading = (TextInputLayout) dialog.findViewById(R.id.iptNewReading);
@@ -118,7 +128,7 @@ public class MainFragment extends BaseFragment {
                         value = Double.parseDouble(edtNewReading.getText().toString());
 
                         if (MainFragment.this.lastReading != null &&
-                                MainFragment.this.lastReading.getValue() < value) {
+                                MainFragment.this.lastReading.getValue() > value) {
                             result = false;
 
                             errorMessage = "O campo não pode ter um valor inferior ao da " +
@@ -134,7 +144,9 @@ public class MainFragment extends BaseFragment {
                         reading.setDeviceUser(getCurrentUser());
                         reading.setValue(value);
 
-                        reading.saveInBackground();
+                        task = new SaveDataTask(MainFragment.this, reading);
+                        task.execute();
+                        //reading.saveInBackground();
 
                         MainFragment.this.refreshLastReading(reading);
                     } else {

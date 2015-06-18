@@ -1,7 +1,5 @@
 package br.com.ricardonm.gotadagua.bo;
 
-import com.parse.ParseQuery;
-
 import java.util.List;
 
 import br.com.ricardonm.gotadagua.model.DeviceUser;
@@ -13,13 +11,9 @@ public class DeviceUserBO {
     public static DeviceUser getDeviceUserByToken(String deviceToken){
         DeviceUser user = null;
         List<DeviceUser> list = null;
-        ParseQuery<DeviceUser> query = null;
-
-        query = ParseQuery.getQuery("DeviceUser");
-        query.whereEqualTo("deviceToken", deviceToken);
 
         try {
-            list = query.find();
+            list = DeviceUser.find(DeviceUser.class, "device_token = ?", deviceToken);
 
             if(list == null || list.size() == 0){
                 user = DeviceUserBO.getNewDeviceUser(deviceToken);
@@ -40,7 +34,7 @@ public class DeviceUserBO {
         DeviceUser user = null;
 
         user = new DeviceUser(deviceToken);
-        user.saveInBackground();
+        user.save();
 
         return user;
     }

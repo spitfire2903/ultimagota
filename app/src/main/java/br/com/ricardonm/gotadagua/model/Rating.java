@@ -1,37 +1,52 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
+
+import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("Rating")
-public class Rating extends ParseObject{
-    public Rating(){}
+public class Rating extends SugarRecord<Rating>{
 
-    public void setRate(int rate){
-        put("rate", rate);
+    private int rate;
+    private Tip tip;
+    private DeviceUser deviceUser;
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public int getRate(){
-        return getInt("rate");
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public void setTip(Tip tip){
-        put("tip", tip);
+    public Rating(){
+        this.createdAt = new Date();
     }
 
-    public Tip getTip(){
-        return (Tip) get("tip");
+    public int getRate() {
+        return rate;
     }
 
-
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
+    public Tip getTip() {
+        return tip;
+    }
+
+    public void setTip(Tip tip) {
+        this.tip = tip;
+    }
+
+    public DeviceUser getDeviceUser() {
+        return deviceUser;
+    }
+
+    public void setDeviceUser(DeviceUser deviceUser) {
+        this.deviceUser = deviceUser;
     }
 }

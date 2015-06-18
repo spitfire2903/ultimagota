@@ -1,37 +1,39 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("UnitReference")
-public class UnitReference extends ParseObject {
+public class UnitReference extends SugarRecord<UnitReference> {
+    private String name;
+    private Double valueM3;
+    private String imgName;
+
     public UnitReference(){}
 
-    public void setName(String name){
-        put("name", name);
+    public String getName() {
+        return name;
     }
 
-    public void setValueM3(Double valueM3){
-        put("valueM3", valueM3);
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setImgName(String imgName){
-        put("imgName", imgName);
+    public Double getValueM3() {
+        return valueM3;
     }
 
-    public String getName(){
-        return getString("name");
+    public void setValueM3(Double valueM3) {
+        this.valueM3 = valueM3;
     }
 
-    public Double getValueM3(){
-        return getDouble("valueM3");
+    public String getImgName() {
+        return imgName;
     }
 
-    public String getImgName(){
-        return getString("imgName");
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
     }
 
     public static Double convertM3ToLitre(Double valueM3){
@@ -50,11 +52,4 @@ public class UnitReference extends ParseObject {
         return result;
     }
 
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
-    }
-
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
-    }
 }

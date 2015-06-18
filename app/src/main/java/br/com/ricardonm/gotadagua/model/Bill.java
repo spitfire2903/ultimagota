@@ -1,60 +1,79 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
 
 import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("Bill")
-public class Bill extends ParseObject {
-    public void setDate(Date date){
-        put("date", date);
+public class Bill extends SugarRecord<Bill> {
+
+    public Bill() {
+        this.createdAt = new Date();
     }
 
-    public void setReadingDate(Date readingDate){
-        put("readingDate", readingDate);
+    private Date date;
+    private Date monthRef;
+    private Double valueM3;
+    private Double billValue;
+    private Date readingDate;
+    private DeviceUser deviceUser;
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setMonthRef(Date monthRef){
-        put("monthRef", monthRef);
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public void setValueM3(Double valueM3){
-        put("valueM3", valueM3);
+    public Date getDate() {
+        return date;
     }
 
-    public void setBillValue(Double billValue){
-        put("billValue", billValue);
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Date getDate(){
-        return getDate("date");
+    public Date getMonthRef() {
+        return monthRef;
     }
 
-    public Date getReadingDate(){
-        return getDate("readingDate");
+    public void setMonthRef(Date monthRef) {
+        this.monthRef = monthRef;
     }
 
-    public Date getMonthRef(){
-        return getDate("monthRef");
+    public Double getValueM3() {
+        return valueM3;
     }
 
-    public Double getValueM3(){
-        return getDouble("valueM3");
+    public void setValueM3(Double valueM3) {
+        this.valueM3 = valueM3;
     }
 
-    public Double getBillValue(){
-        return getDouble("billValue");
+    public Double getBillValue() {
+        return billValue;
     }
 
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
+    public void setBillValue(Double billValue) {
+        this.billValue = billValue;
     }
 
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
+    public Date getReadingDate() {
+        return readingDate;
+    }
+
+    public void setReadingDate(Date readingDate) {
+        this.readingDate = readingDate;
+    }
+
+    public DeviceUser getDeviceUser() {
+        return deviceUser;
+    }
+
+    public void setDeviceUser(DeviceUser deviceUser) {
+        this.deviceUser = deviceUser;
     }
 }

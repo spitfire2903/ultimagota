@@ -1,7 +1,5 @@
 package br.com.ricardonm.gotadagua.bo;
 
-import com.parse.ParseQuery;
-
 import java.util.List;
 
 import br.com.ricardonm.gotadagua.model.DeviceUser;
@@ -14,14 +12,11 @@ public class ReadingBO {
     public static Reading getLastReadingByDeviceUser(DeviceUser deviceUser){
         Reading reading = null;
         List<Reading> list = null;
-        ParseQuery<Reading> query = null;
 
-        query = ParseQuery.getQuery("Reading");
-        query.whereEqualTo("deviceUser.deviceToken", deviceUser.getDeviceToken());
-        query.orderByDescending("createdAt");
+        // query.orderByDescending("createdAt");
 
         try {
-            list = query.find();
+            list = Reading.find(Reading.class, "device_user = ?", deviceUser.getId().toString());
 
             if(list != null && list.size() > 0){
                 reading = list.get(0);

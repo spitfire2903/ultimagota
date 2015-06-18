@@ -1,53 +1,29 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
+
+import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("Reservatory")
-public class Reservatory extends ParseObject {
-    public Reservatory(){}
+public class Reservatory extends SugarRecord<Reservatory> {
+    private String name;
+    private String text;
+    private String lat;
+    private String lng;
+    private DeviceUser deviceUser;
+    private Date createdAt;
 
-    public String getName() {
-        return getString("name");
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setName(String name) {
-        put("name", name);
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getText() {
-        return getString("text");
-    }
-
-    public void setText(String text) {
-        put("text", text);
-    }
-
-    public String getLat() {
-        return getString("lat");
-    }
-
-    public void setLat(String lat) {
-        put("lat", lat);
-    }
-
-    public String getLng() {
-        return getString("lng");
-    }
-
-    public void setLng(String lng) {
-        put("lng", lng);
-    }
-
-
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
-    }
-
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
+    public Reservatory(){
+        this.createdAt = new Date();
     }
 }

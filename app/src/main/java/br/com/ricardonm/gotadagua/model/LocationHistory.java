@@ -2,57 +2,83 @@ package br.com.ricardonm.gotadagua.model;
 
 import android.location.Location;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
+
+import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("LocationHistory")
-public class LocationHistory extends ParseObject {
-    public LocationHistory(){}
+public class LocationHistory extends SugarRecord<LocationHistory> {
+
+    private Double lat;
+    private Double lng;
+    private long time;
+    private Double accuracy;
+    private DeviceUser deviceUser;
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    public LocationHistory(){
+        this.createdAt = new Date();
+    }
 
     public LocationHistory(Location location){
         Float accuracy = null;
 
         accuracy = new Float(location.getAccuracy());
 
-        this.setLat(location.getLatitude());
-        this.setLng(location.getLongitude());
-        this.setAccuracy(Double.parseDouble(accuracy.toString()));
-        this.setTime(location.getTime());
+        this.lat = location.getLatitude();
+        this.lng = location.getLongitude();
+        this.accuracy = Double.parseDouble(accuracy.toString());
+        this.time = location.getTime();
+
+        this.createdAt = new Date();
     }
 
-    public void setLat(Double lat){
-        put("lat", lat);
+    public Double getLat() {
+        return lat;
     }
 
-    public void setLng(Double lng){
-        put("lng", lng);
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
-    public void setTime(Long time){
-        put("time", time);
+    public Double getLng() {
+        return lng;
     }
 
-    public void setAccuracy(Double accuracy){
-        put("accuracy", accuracy);
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
-    public Double getLat(){
-        return getDouble("lat");
+    public long getTime() {
+        return time;
     }
 
-    public Double getLng(){
-        return getDouble("lng");
+    public void setTime(long time) {
+        this.time = time;
     }
 
-    public Long getTime(){
-        return getLong("time");
+    public Double getAccuracy() {
+        return accuracy;
     }
 
-    public Double getAccuracy(){
-        return getDouble("accuracy");
+    public void setAccuracy(Double accuracy) {
+        this.accuracy = accuracy;
     }
 
+    public DeviceUser getDeviceUser() {
+        return deviceUser;
+    }
+
+    public void setDeviceUser(DeviceUser deviceUser) {
+        this.deviceUser = deviceUser;
+    }
 }

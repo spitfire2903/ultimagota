@@ -1,40 +1,51 @@
 package br.com.ricardonm.gotadagua.model;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.orm.SugarRecord;
 
 import java.util.Date;
 
 /**
  * Created by ricardomiranda on 17/06/15.
  */
-@ParseClassName("Goal")
-public class Goal extends ParseObject {
-    public Goal(){}
+public class Goal extends SugarRecord<Goal> {
 
-    public void setGoal(int goal){
-        put("goal", goal);
+    private long goal;
+    private Date monthRef;
+    private DeviceUser deviceUser;
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public int getGoal() {
-        return getInt("goal");
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    public Goal(){
+        this.createdAt = new Date();
     }
 
-    public void setMonthRef(Date monthRef){
-        put("monthRef", monthRef);
+    public long getGoal() {
+        return goal;
+    }
+
+    public void setGoal(long goal) {
+        this.goal = goal;
     }
 
     public Date getMonthRef() {
-        return getDate("monthRef");
+        return monthRef;
     }
 
-
-    public void setDeviceUser(DeviceUser deviceUser){
-        put("deviceUser", deviceUser);
+    public void setMonthRef(Date monthRef) {
+        this.monthRef = monthRef;
     }
 
-    public DeviceUser getDeviceUser(){
-        return (DeviceUser) get("deviceUser");
+    public DeviceUser getDeviceUser() {
+        return deviceUser;
     }
 
+    public void setDeviceUser(DeviceUser deviceUser) {
+        this.deviceUser = deviceUser;
+    }
 }

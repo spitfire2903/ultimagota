@@ -16,39 +16,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
-import com.parse.SaveCallback;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import br.com.ricardonm.gotadagua.auth.AuthKeys;
 import br.com.ricardonm.gotadagua.fragment.BillFragment;
 import br.com.ricardonm.gotadagua.fragment.MainFragment;
 import br.com.ricardonm.gotadagua.fragment.ReadingHistoryFragment;
 import br.com.ricardonm.gotadagua.fragment.ReservatoryFragment;
 import br.com.ricardonm.gotadagua.fragment.TipsFragment;
 import br.com.ricardonm.gotadagua.fragment.WeatherFragment;
-import br.com.ricardonm.gotadagua.model.Bill;
 import br.com.ricardonm.gotadagua.model.DeviceUser;
-import br.com.ricardonm.gotadagua.model.Goal;
-import br.com.ricardonm.gotadagua.model.LocationHistory;
-import br.com.ricardonm.gotadagua.model.Rating;
-import br.com.ricardonm.gotadagua.model.Reading;
-import br.com.ricardonm.gotadagua.model.Reservatory;
-import br.com.ricardonm.gotadagua.model.ReservatoryCapacity;
-import br.com.ricardonm.gotadagua.model.Tip;
-import br.com.ricardonm.gotadagua.model.TipCategory;
-import br.com.ricardonm.gotadagua.model.UnitReference;
 import br.com.ricardonm.gotadagua.task.LoadDeviceUserTask;
-
-import static com.parse.Parse.enableLocalDatastore;
-import static com.parse.Parse.initialize;
-import static com.parse.ParseInstallation.getCurrentInstallation;
-import static com.parse.ParseObject.registerSubclass;
 
 
 public class MainActivity extends ActionBarActivity
@@ -138,7 +113,8 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.initParse();
+        // this.initParse();
+        this.initUser();
         this.loadUserLocation();
 
         this.setupUI();
@@ -149,6 +125,16 @@ public class MainActivity extends ActionBarActivity
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+    public void initUser(){
+        String deviceToken = null;
+        LoadDeviceUserTask task = null;
+
+        deviceToken = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);;
+
+        task = new LoadDeviceUserTask(MainActivity.this, deviceToken);
+                    task.execute();
     }
 
     public void setupUI(){
@@ -232,45 +218,6 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void initParse(){
-        // Enable Local Datastore.
-        enableLocalDatastore(this);
-
-        registerSubclass(Goal.class);
-        registerSubclass(Rating.class);
-        registerSubclass(Reservatory.class);
-        registerSubclass(ReservatoryCapacity.class);
-        registerSubclass(Tip.class);
-        registerSubclass(TipCategory.class);
-        registerSubclass(UnitReference.class);
-        registerSubclass(Reading.class);
-        registerSubclass(Bill.class);
-        registerSubclass(DeviceUser.class);
-        registerSubclass(LocationHistory.class);
-
-        initialize(this, AuthKeys.PARSE_APP_ID, AuthKeys.PARSE_CLIENT_KEY);
-        getCurrentInstallation().saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                String deviceToken = null;
-                ParseQuery<DeviceUser> query = null;
-                LoadDeviceUserTask task = null;
-
-                if(e == null) {
-                    //deviceToken = (String) ParseInstallation.getCurrentInstallation().get("deviceToken");
-                    deviceToken = Settings.Secure.getString(getApplicationContext()
-                            .getContentResolver(), Settings.Secure.ANDROID_ID);
-                    task = new LoadDeviceUserTask(MainActivity.this, deviceToken);
-                    task.execute();
-                }
-            }
-        });
-        ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
-        // this.testTrackData();
-        // this.testCrashData();
-    }
-
     private void loadUserLocation(){
         LocationManager locationManager = null;
         String provider = null;
@@ -344,17 +291,6 @@ public class MainActivity extends ActionBarActivity
 
     public void setUserLocation(Location userLocation) {
         this.userLocation = userLocation;
-
-        List<LocationHistory> list = null;
-
-        if(deviceUser != null && deviceUser.getLocations() != null){
-            list = deviceUser.getLocations();
-
-            list.add(new LocationHistory(userLocation));
-
-            deviceUser.saveInBackground();
-        }
-
     }
 
     private String getTitleFromFragmentIndex(FragmentIndex fragmentIdx){
@@ -384,20 +320,5 @@ public class MainActivity extends ActionBarActivity
 
         return title;
 
-    }
-
-    private void testTrackData(){
-        Map<String, String> dimensions = new HashMap<String, String>();
-        // What type of news is this?
-        dimensions.put("category", "politics");
-        // Is it a weekday or the weekend?
-        dimensions.put("dayType", "weekday");
-        // Send the dimensions to Parse along with the 'read' event
-
-        ParseAnalytics.trackEventInBackground("read", dimensions);
-    }
-
-    private void testCrashData(){
-        throw new RuntimeException("Test Exception!");
     }
 }
