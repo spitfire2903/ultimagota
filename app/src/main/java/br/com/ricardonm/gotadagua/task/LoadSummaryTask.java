@@ -38,8 +38,10 @@ public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
             }
         }
 
-        chartMaxValue = (lastGoal != null && chartMaxValue > lastGoal.getGoal() ? chartMaxValue :
-                lastGoal.getGoal() + 10);
+        if (lastGoal != null) {
+            chartMaxValue = (chartMaxValue > lastGoal.getGoal() ? chartMaxValue :
+                    lastGoal.getGoal() + 10);
+        }
 
         return super.doInBackground();
     }
