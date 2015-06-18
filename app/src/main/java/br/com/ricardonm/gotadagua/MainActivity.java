@@ -2,14 +2,12 @@ package br.com.ricardonm.gotadagua;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -204,6 +202,7 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     @Override
     public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onPostCreate(savedInstanceState, persistentState);
@@ -216,7 +215,7 @@ public class MainActivity extends ActionBarActivity
         super.onConfigurationChanged(newConfig);
 
         mNavigationDrawerFragment.mDrawerToggle.onConfigurationChanged(newConfig);
-    }
+    }*/
 
     private void loadUserLocation(){
         LocationManager locationManager = null;
