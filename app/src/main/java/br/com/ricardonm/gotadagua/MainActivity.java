@@ -8,7 +8,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -22,8 +21,6 @@ import br.com.ricardonm.gotadagua.fragment.ReadingHistoryFragment;
 import br.com.ricardonm.gotadagua.fragment.ReservatoryFragment;
 import br.com.ricardonm.gotadagua.fragment.TipsFragment;
 import br.com.ricardonm.gotadagua.fragment.WeatherFragment;
-import br.com.ricardonm.gotadagua.model.DeviceUser;
-import br.com.ricardonm.gotadagua.task.LoadDeviceUserTask;
 
 
 public class MainActivity extends ActionBarActivity
@@ -85,8 +82,6 @@ public class MainActivity extends ActionBarActivity
 
     private Location userLocation;
 
-    private DeviceUser deviceUser;
-
     protected ProgressDialog progressDialog = null;
 
     public void showThrobber(){
@@ -114,7 +109,6 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
 
         // this.initParse();
-        this.initUser();
         this.loadUserLocation();
 
         this.setupUI();
@@ -125,16 +119,6 @@ public class MainActivity extends ActionBarActivity
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
-
-    public void initUser(){
-        String deviceToken = null;
-        LoadDeviceUserTask task = null;
-
-        deviceToken = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);;
-
-        task = new LoadDeviceUserTask(MainActivity.this, deviceToken);
-                    task.execute();
     }
 
     public void setupUI(){
@@ -279,14 +263,6 @@ public class MainActivity extends ActionBarActivity
 
     public Location getUserLocation() {
         return userLocation;
-    }
-
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
     }
 
     public void setUserLocation(Location userLocation) {

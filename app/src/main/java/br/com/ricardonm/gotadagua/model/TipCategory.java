@@ -8,7 +8,6 @@ import com.orm.SugarRecord;
 public class TipCategory extends SugarRecord<TipCategory> {
     private String name;
     private String text;
-    private DeviceUser deviceUser;
 
     public TipCategory(){
 
@@ -28,13 +27,5 @@ public class TipCategory extends SugarRecord<TipCategory> {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
     }
 }

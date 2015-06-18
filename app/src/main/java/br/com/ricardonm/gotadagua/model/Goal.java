@@ -11,7 +11,6 @@ public class Goal extends SugarRecord<Goal> {
 
     private long goal;
     private Date monthRef;
-    private DeviceUser deviceUser;
     private Date createdAt;
 
     public Date getCreatedAt() {
@@ -23,6 +22,7 @@ public class Goal extends SugarRecord<Goal> {
     }
     public Goal(){
         this.createdAt = new Date();
+        this.monthRef = new Date();
     }
 
     public long getGoal() {
@@ -39,13 +39,5 @@ public class Goal extends SugarRecord<Goal> {
 
     public void setMonthRef(Date monthRef) {
         this.monthRef = monthRef;
-    }
-
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
     }
 }

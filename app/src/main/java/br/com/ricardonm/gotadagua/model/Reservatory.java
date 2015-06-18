@@ -7,12 +7,12 @@ import java.util.Date;
 /**
  * Created by ricardomiranda on 17/06/15.
  */
+// TODO: tentar descobrir a lat e lng dos reservatorios
 public class Reservatory extends SugarRecord<Reservatory> {
     private String name;
-    private String text;
-    private String lat;
-    private String lng;
-    private DeviceUser deviceUser;
+//    private String text;
+//    private String lat;
+//    private String lng;
     private Date createdAt;
 
     public Date getCreatedAt() {
@@ -21,6 +21,14 @@ public class Reservatory extends SugarRecord<Reservatory> {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Reservatory(){

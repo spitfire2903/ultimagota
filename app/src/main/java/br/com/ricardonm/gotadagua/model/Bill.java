@@ -18,7 +18,6 @@ public class Bill extends SugarRecord<Bill> {
     private Double valueM3;
     private Double billValue;
     private Date readingDate;
-    private DeviceUser deviceUser;
     private Date createdAt;
 
     public Date getCreatedAt() {
@@ -69,11 +68,4 @@ public class Bill extends SugarRecord<Bill> {
         this.readingDate = readingDate;
     }
 
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
-    }
 }

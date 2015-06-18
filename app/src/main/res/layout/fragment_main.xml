@@ -16,9 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- A CardView that contains a TextView -->
+
             <android.support.v7.widget.CardView
-                android:id="@+id/card_hidrometro"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -54,7 +53,8 @@
                         android:padding="10dp"
                         android:shrinkColumns="*"
                         android:stretchColumns="*">
-                        <TableRow>
+                        <TableRow
+                            android:visibility="gone">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -99,6 +99,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textAlignment="center"
                             android:text="Ainda não foi feita nenhuma leitura do hidrometro"/>
                     </LinearLayout>
                     <View style="@style/CardSeparator"/>
@@ -124,6 +125,7 @@
                         android:id="@+id/btnViewReadingHistory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:background="?attr/selectableItemBackground"
                         android:padding="10dp">
                         <ImageView
@@ -136,6 +138,61 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="15dp"
                             android:text="Ver Histórico"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/water"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:src="@drawable/ic_settings_input_svideo_white_36dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:alpha="0.7"/>
+                        <TextView
+                            android:layout_marginLeft="15dp"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Consumo"
+                            android:textColor="@android:color/white"/>
+                    </LinearLayout>
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chtConsumo"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp" />
+                    <View style="@style/CardSeparator"/>
+                    <LinearLayout
+                        android:id="@+id/btnAddGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="10dp">
+                        <ImageView
+                            android:src="@drawable/ic_add_black_36dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp"
+                            android:text="Adicionar nova meta diária"/>
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>

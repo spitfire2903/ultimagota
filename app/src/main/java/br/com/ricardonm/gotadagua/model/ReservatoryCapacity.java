@@ -8,11 +8,13 @@ import java.util.Date;
  * Created by ricardomiranda on 17/06/15.
  */
 public class ReservatoryCapacity extends SugarRecord<ReservatoryCapacity> {
-    private Double value;
-    private Double volume;
-    private Double percChange;
+    // private Double value;
+    private Double percVolume;
+    private Double dailyRainfall;
+    private Double monthRainfall;
+    private Double historicalMonthRainfall;
+    //private Double percChange;
     private Reservatory reservatory;
-    private DeviceUser deviceUser;
     private Date createdAt;
 
     public ReservatoryCapacity() {
@@ -27,28 +29,36 @@ public class ReservatoryCapacity extends SugarRecord<ReservatoryCapacity> {
         this.createdAt = createdAt;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getPercVolume() {
+        return percVolume;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setPercVolume(Double percVolume) {
+        this.percVolume = percVolume;
     }
 
-    public Double getVolume() {
-        return volume;
+    public Double getDailyRainfall() {
+        return dailyRainfall;
     }
 
-    public void setVolume(Double volume) {
-        this.volume = volume;
+    public void setDailyRainfall(Double dailyRainfall) {
+        this.dailyRainfall = dailyRainfall;
     }
 
-    public Double getPercChange() {
-        return percChange;
+    public Double getMonthRainfall() {
+        return monthRainfall;
     }
 
-    public void setPercChange(Double percChange) {
-        this.percChange = percChange;
+    public void setMonthRainfall(Double monthRainfall) {
+        this.monthRainfall = monthRainfall;
+    }
+
+    public Double getHistoricalMonthRainfall() {
+        return historicalMonthRainfall;
+    }
+
+    public void setHistoricalMonthRainfall(Double historicalMonthRainfall) {
+        this.historicalMonthRainfall = historicalMonthRainfall;
     }
 
     public Reservatory getReservatory() {
@@ -59,11 +69,4 @@ public class ReservatoryCapacity extends SugarRecord<ReservatoryCapacity> {
         this.reservatory = reservatory;
     }
 
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
-    }
 }

@@ -11,7 +11,6 @@ public class Rating extends SugarRecord<Rating>{
 
     private int rate;
     private Tip tip;
-    private DeviceUser deviceUser;
     private Date createdAt;
 
     public Date getCreatedAt() {
@@ -42,11 +41,4 @@ public class Rating extends SugarRecord<Rating>{
         this.tip = tip;
     }
 
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
-    }
 }

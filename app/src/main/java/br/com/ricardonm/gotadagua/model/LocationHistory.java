@@ -15,7 +15,6 @@ public class LocationHistory extends SugarRecord<LocationHistory> {
     private Double lng;
     private long time;
     private Double accuracy;
-    private DeviceUser deviceUser;
     private Date createdAt;
 
     public Date getCreatedAt() {
@@ -74,11 +73,4 @@ public class LocationHistory extends SugarRecord<LocationHistory> {
         this.accuracy = accuracy;
     }
 
-    public DeviceUser getDeviceUser() {
-        return deviceUser;
-    }
-
-    public void setDeviceUser(DeviceUser deviceUser) {
-        this.deviceUser = deviceUser;
-    }
 }

@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.com.ricardonm.gotadagua.model.DeviceUser;
-
 /**
  * Created by ricardomiranda on 17/06/15.
  */
@@ -51,10 +49,6 @@ public class BaseFragment extends Fragment {
         }
 
         return activity;
-    }
-
-    public DeviceUser getCurrentUser(){
-        return getParentActivity().getDeviceUser();
     }
     /*@Override
     public void onAttach(Activity activity) {

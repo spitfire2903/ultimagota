@@ -14,8 +14,6 @@ public class Tip extends SugarRecord<Tip> {
     private List<TipCategory> categories;
     private Date createdAt;
 
-
-
     public String getTitle() {
         return title;
     }
