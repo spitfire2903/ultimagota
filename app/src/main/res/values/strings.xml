@@ -23,4 +23,68 @@
         <!--<item>@drawable/ic_pages</item>-->
         <!--<item>@drawable/ic_whats_hot</item>-->
     <!--</array>-->
+
+    <string name="weather_text_000">Tornado</string>
+    <string name="weather_text_001">Chuva Tropical</string>
+    <string name="weather_text_002">Furacão</string>
+    <string name="weather_text_003">Tempestades Severas</string>
+    <string name="weather_text_004">Trovoadas</string>
+    <string name="weather_text_005">Mixed rain snow</string>
+    <string name="weather_text_006">Mixed rain sleet</string>
+    <string name="weather_text_007">Mixed snow sleet</string>
+    <string name="weather_text_008">Garoa Congelante</string>
+    <string name="weather_text_009">Garoa</string>
+    <string name="weather_text_010">Chuva Congelante</string>
+    <string name="weather_text_011">Chuviscos</string>
+    <string name="weather_text_012">Tempestades</string>
+    <string name="weather_text_013">Snow flurries</string>
+    <string name="weather_text_014">Light snow showers</string>
+    <string name="weather_text_015">Blowing snow</string>
+    <string name="weather_text_016">Snow</string>
+    <string name="weather_text_017">Hail</string>
+    <string name="weather_text_018">Chuva com neve</string>
+    <string name="weather_text_019">Poeira</string>
+    <string name="weather_text_020">Nebuloso</string>
+    <string name="weather_text_021">Neblina</string>
+    <string name="weather_text_022">Esfumaçado</string>
+    <string name="weather_text_023">Blustery</string>
+    <string name="weather_text_024">Ventos</string>
+    <string name="weather_text_025">Frio</string>
+    <string name="weather_text_026">Nublado</string>
+    <string name="weather_text_027">"Muito nublado durante a noite"</string>
+    <string name="weather_text_028">"Muito nublado no dia"</string>
+    <string name="weather_text_029">"Noite Parcialmente nublado"</string>
+    <string name="weather_text_030">"Dia parcialmente nublado"</string>
+    <string name="weather_text_031">Noite limpa</string>
+    <string name="weather_text_032">Ensolarado</string>
+    <string name="weather_text_033">Noite Tranquila</string>
+    <string name="weather_text_034">Dia Tranquilo</string>
+    <string name="weather_text_035">Mixed rain and hail</string>
+    <string name="weather_text_036">Quente</string>
+    <string name="weather_text_037">Parcialmente nublado</string>
+    <string name="weather_text_038">Trovoadas dispersas</string>
+    <string name="weather_text_039">Trovoadas dispersas</string>
+    <string name="weather_text_040">Chuvas dispersas</string>
+    <string name="weather_text_041">Neve pesada</string>
+    <string name="weather_text_042">Neve dispersas</string>
+    <string name="weather_text_044">Parcialmente Nublado</string>
+    <string name="weather_text_045">Parcialmente Nublado</string>
+    <string name="weather_text_046">Snow showers</string>
+    <string name="weather_text_047">Trovoadas isoladas</string>
+    <string name="weather_text_1000">Não disponível</string>
+
+    <string name="open_weather_maps_app_id">11111</string>
+
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
+
+    <string name="place_not_found">Desculpe, não foi possivel trazer sua previsão do tempo.</string>
+
 </resources>

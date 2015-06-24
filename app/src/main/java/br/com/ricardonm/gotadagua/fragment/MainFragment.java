@@ -186,7 +186,7 @@ public class MainFragment extends BaseFragment {
             this.allReadings.add(reading);
 
             if (chartMaxValue != null && reading.getRelativeValue() > chartMaxValue){
-                chartMaxValue = reading.getRelativeValue() + 10;
+                chartMaxValue = reading.getRelativeValue() + reading.getRelativeValue()/5;
             }
 
             this.refreshChart();
@@ -206,7 +206,7 @@ public class MainFragment extends BaseFragment {
             this.lastGoal = goal;
 
             if (chartMaxValue != null && goal.getGoal() > chartMaxValue.longValue()){
-                chartMaxValue = (double) goal.getGoal() + 10;
+                chartMaxValue = (double) goal.getGoal() + goal.getGoal()/5;
             }
 
             this.refreshChart();

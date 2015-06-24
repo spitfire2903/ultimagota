@@ -110,7 +110,6 @@ public class MainActivity extends ActionBarActivity
 
         // this.initParse();
         this.loadUserLocation();
-
         this.setupUI();
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -121,11 +120,17 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mNavigationDrawerFragment.mDrawerToggle.syncState();
+    }
+
     public void setupUI(){
         ActionBar actionBar = null;
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     }
 
     @Override
@@ -170,6 +175,7 @@ public class MainActivity extends ActionBarActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
         actionBar.setTitle(mTitle);
     }
 

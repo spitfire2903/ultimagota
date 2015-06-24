@@ -134,12 +134,23 @@ public class ReservatoryBO {
 
     public static ReservatoryCapacity getCapacityFromJson(JSONObject json) throws JSONException{
         ReservatoryCapacity capacity = null;
+        String volArmazenado = null;
 
         capacity = new ReservatoryCapacity();
 
         // {"volume_armazenado":"54,9 %","pluviometria_do_dia":"0,2 mm","pluviometria_acumulada_no_mes":"33,4 mm","media_historica_do_mes":"95,4 mm"}
         if (json != null){
-            capacity.setPercVolume(ReservatoryBO.getDoubleFromJsonString(json.getString("volume_armazenado")));
+            volArmazenado = json.getString("volume_armazenado");
+
+            if(volArmazenado.indexOf(":") != -1){
+                volArmazenado = volArmazenado.substring(volArmazenado.indexOf(":")+1, volArmazenado
+                        .length());
+            }
+            if(volArmazenado.indexOf("%") != -1){
+                volArmazenado = volArmazenado.substring(0, volArmazenado.indexOf("%"));
+            }
+
+            capacity.setPercVolume(ReservatoryBO.getDoubleFromJsonString(volArmazenado));
             capacity.setDailyRainfall(ReservatoryBO.getDoubleFromJsonString(json.getString
                     ("pluviometria_do_dia")));
             capacity.setMonthRainfall(ReservatoryBO.getDoubleFromJsonString(json.getString

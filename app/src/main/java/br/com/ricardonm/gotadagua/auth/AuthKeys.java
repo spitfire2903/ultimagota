@@ -14,4 +14,6 @@ public class AuthKeys {
     public static String PARSE_APP_ID = "ZsG9JsPjkjujBzM5yRbqcS2OOBE7VdhLHZuoCYlv";
 
     public static String PARSE_CLIENT_KEY = "V7zwH7eGd6fcj1nZ0IZGsmc91LjdMzdHD5fuQcW9";
+
+    public static String FORECAST_APP_KEY = "a0d8bc6190882585f4c10ac4a2f8178e";
 }
