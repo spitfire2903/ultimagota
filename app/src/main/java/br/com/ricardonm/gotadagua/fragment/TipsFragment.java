@@ -32,10 +32,9 @@ public class TipsFragment extends BaseFragment {
         adapter = new ArrayAdapter<String>(this.getParentActivity(), R.layout.row_tip,
                 R.id.txtTipItem, getTips());
 
-        // Assign adapter to ListView
         lstTips.setAdapter(adapter);
 
-        // ListView Item Click Listener
+        // On click listener for each tip
         lstTips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -60,6 +59,10 @@ public class TipsFragment extends BaseFragment {
         return rootView;
     }
 
+    /**
+     * Get hardcoded list of tips
+     * @return
+     */
     private String[] getTips(){
         String[] result = null;
 

@@ -17,9 +17,23 @@ import br.com.ricardonm.gotadagua.wrapper.WrapperUtil;
  * Created by ricardomiranda.
  */
 public class ReservatoryBO {
+    /**
+     * Sabesp URL for the reservatories capacities
+     */
     public static String SABESP_URL = "https://sabesp-api.herokuapp.com/v2";
+
+    /**
+     * HTTP Client to request the website
+     */
     private static AsyncHttpClient client = new AsyncHttpClient();
 
+    /**
+     * Get the reservatory by name or create one.
+     * @param name
+     *      Name for search for reservatory
+     * @return reservatory
+     *      Object of the reservatory.
+     */
     public static Reservatory getReservatoryByName(String name){
         Reservatory reservatory = null;
         List<Reservatory> list = null;
@@ -44,6 +58,13 @@ public class ReservatoryBO {
         return reservatory;
     }
 
+    /**
+     * Get the last info about the reservatory capacity
+     * @param reservatory
+     *      Object of the desired reservatory
+     * @return capacity
+     *      Info about the reservatory capacity.
+     */
     public static ReservatoryCapacity getLastReservatoryCapacityByReservatory(Reservatory reservatory){
         ReservatoryCapacity capacity = null;
         List<ReservatoryCapacity> list = null;
@@ -65,6 +86,11 @@ public class ReservatoryBO {
         return capacity;
     }
 
+    /**
+     * Get the list of all reservatories.
+     * @return list
+     *      List of all reservatories available.
+     */
     public static List<Reservatory> getAllReservatory(){
         List<Reservatory> list = null;
 
@@ -79,6 +105,11 @@ public class ReservatoryBO {
         return list;
     }
 
+    /**
+     * List of the last capacities for each reservatory
+     * @return list
+     *      List of the reservatories capacities.
+     */
     public static List<ReservatoryCapacity> getLastReservatoriesCapacity(){
         List<Reservatory> reservatories = null;
         List<ReservatoryCapacity> list = null;
@@ -106,11 +137,24 @@ public class ReservatoryBO {
         return list;
     }
 
+    /**
+     * Handle the reservatory info from JSON from sabesp
+     * @param handler
+     *      Handler for the HTTP Client methods
+     * @throws JSONException
+     *      Exception
+     */
     public static void loadReservatoryAndCapacityFromSabesp(JsonHttpResponseHandler handler) throws
             JSONException {
         WrapperUtil.get(SABESP_URL, null, handler);
     }
 
+    /**
+     * Load the reservatory info from json
+     * @param json
+     *      Object with reservatory info.
+     * @throws JSONException
+     */
     public static void loadReservatoryFromJson(JSONObject json) throws JSONException{
         Reservatory reservatory = null;
         ReservatoryCapacity capacity = null;
@@ -132,6 +176,14 @@ public class ReservatoryBO {
         }
     }
 
+    /**
+     * Get info about the capacity of desired reservatory
+     * @param json
+     *      Json object with info.
+     * @return  capacity
+     *      Object with reservatory capacity info.
+     * @throws JSONException
+     */
     public static ReservatoryCapacity getCapacityFromJson(JSONObject json) throws JSONException{
         ReservatoryCapacity capacity = null;
         String volArmazenado = null;
@@ -163,6 +215,13 @@ public class ReservatoryBO {
         return capacity;
     }
 
+    /**
+     * Auxiliary method to handle conversion of string to double
+     * @param json
+     *      Json object to be converted to Double
+     * @return result
+     *      Double result.
+     */
     public static Double getDoubleFromJsonString(String json){
         Double result = null;
 

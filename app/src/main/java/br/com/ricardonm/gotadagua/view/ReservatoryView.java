@@ -64,6 +64,10 @@ public class ReservatoryView extends LinearLayout{
         return capacity;
     }
 
+    /**
+     * Set the capacity for the desired reservatory.
+     * @param capacity
+     */
     public void setCapacity(ReservatoryCapacity capacity) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         NumberFormat format = NumberFormat.getInstance();
@@ -86,6 +90,9 @@ public class ReservatoryView extends LinearLayout{
 
     }
 
+    /**
+     * Set visible 'no reservatory info'
+     */
     public void setNoInfoReservatory(){
         vwCardReservatory.setVisibility(GONE);
         vwNoInfoReservatory.setVisibility(VISIBLE);

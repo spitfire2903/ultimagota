@@ -49,8 +49,10 @@ public class WeatherFragment extends BaseFragment {
 
         rootView = inflater.inflate(R.layout.fragment_weather, container, false);
 
+        // Set the font for the weather forecast
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weathericons-regular-webfont.ttf");
 
+        // Identifier the fields
         txtCityField = (TextView)rootView.findViewById(R.id.city_field);
         txtUpdatedField = (TextView)rootView.findViewById(R.id.updated_field);
         txtDetailsField = (TextView)rootView.findViewById(R.id.details_field);
@@ -62,6 +64,7 @@ public class WeatherFragment extends BaseFragment {
         txtWeatherIcon.setTypeface(weatherFont);
 
         try {
+            // Create a new config for the weather api.
             config = new WeatherConfig();
             config.ApiKey = AuthKeys.OPEN_WEATHER_MAP;
 
@@ -73,9 +76,15 @@ public class WeatherFragment extends BaseFragment {
                     .config(this.config)
                     .build();
 
+            // Make a request for the weather api
             client.getCurrentCondition(new WeatherRequest(this.getParentActivity()
                     .getUserLocation().getLongitude(), this.getParentActivity()
                     .getUserLocation().getLatitude()), new WeatherClient.WeatherEventListener() {
+
+                /**
+                 * Callback for weather information
+                 * @param currentWeather
+                 */
                 @Override
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {
                     Location location = null;
@@ -128,6 +137,12 @@ public class WeatherFragment extends BaseFragment {
         return rootView;
     }
 
+    /**
+     * Sets weather icon through the weather code
+     * @param actualId
+     * @param sunrise
+     * @param sunset
+     */
     private void setWeatherIcon(int actualId, long sunrise, long sunset){
         int id = actualId / 100;
         String icon = "";

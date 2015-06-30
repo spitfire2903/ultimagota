@@ -16,6 +16,11 @@ public class LoadReservatoriesDataTask extends BaseTask<ReservatoryFragment, Voi
         super(fragment);
     }
 
+    /**
+     * Load last data from reservatories
+     * @param params
+     * @return
+     */
     @Override
     protected Void doInBackground(Void... params) {
 

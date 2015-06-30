@@ -12,6 +12,13 @@ import br.com.ricardonm.gotadagua.R;
  * Created by ricardomiranda.
  */
 public class BillFragment extends BaseFragment {
+    /**
+     * Overrided method from Android to load the Bill Fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = null;

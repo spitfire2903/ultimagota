@@ -8,6 +8,12 @@ import br.com.ricardonm.gotadagua.model.Reading;
  * Created by ricardomiranda.
  */
 public class ReadingBO {
+    /**
+     * Get the last hydrometer reading
+     *
+     * @return reading
+     *      Object for the last reading.
+     */
     public static Reading getLastReading(){
         Reading reading = null;
         List<Reading> list = null;
@@ -27,6 +33,11 @@ public class ReadingBO {
         return reading;
     }
 
+    /**
+     * Get all user readings
+     * @return list
+     *      List of the user reading objects.
+     */
     public static List<Reading> getAllReading(){
         List<Reading> list = null;
 

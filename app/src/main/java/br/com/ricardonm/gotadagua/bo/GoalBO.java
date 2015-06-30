@@ -8,6 +8,13 @@ import br.com.ricardonm.gotadagua.model.Goal;
  * Created by ricardomiranda.
  */
 public class GoalBO {
+
+    /**
+     * Get the last goal of the user
+     *
+     * @return goal
+     *      Object of the last user goal.
+     */
     public static Goal getLastGoal(){
         Goal goal = null;
         List<Goal> list = null;

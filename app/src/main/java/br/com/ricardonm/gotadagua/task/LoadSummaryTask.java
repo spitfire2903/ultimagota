@@ -21,6 +21,11 @@ public class LoadSummaryTask extends BaseTask<MainFragment, Void, Void, Void> {
         super(fragment);
     }
 
+    /**
+     * Load info for the main screen
+     * @param params
+     * @return
+     */
     @Override
     protected Void doInBackground(Void... params) {
         // this.initSampleData();

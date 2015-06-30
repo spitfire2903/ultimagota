@@ -55,6 +55,13 @@ public class MainFragment extends BaseFragment {
 
     private LineChart chtConsumo;
 
+    /**
+     * Overrided method from Android to load the Main Fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = null;
@@ -83,6 +90,9 @@ public class MainFragment extends BaseFragment {
         return rootView;
     }
 
+    /**
+     * Method to refresh chart info
+     */
     public void refreshChart(){
         LimitLine goalLine = null;
         YAxis leftAxis = null;
@@ -170,6 +180,10 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Method to refresh the readings information.
+     * @param readings
+     */
     public void refreshAllReading(List<Reading> readings){
         if (readings != null && readings.size() > 0) {
             this.allReadings = readings;
@@ -180,6 +194,10 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Method to refresh the last reading info
+     * @param reading
+     */
     public void refreshLastReading(Reading reading){
         if (reading != null) {
             this.lastReading = reading;
@@ -201,6 +219,10 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Method to refresh the last goal.
+     * @param goal
+     */
     public void refreshLastGoal(Goal goal){
         if (goal != null){
             this.lastGoal = goal;
@@ -213,6 +235,11 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Set the reading for desired textview, used for formatting
+     * @param reading
+     * @param textView
+     */
     public void setReading(Reading reading, TextView textView){
         NumberFormat nf = NumberFormat.getInstance();
 
@@ -222,6 +249,9 @@ public class MainFragment extends BaseFragment {
         textView.setText(nf.format(reading.getValue())+" m³");
     }
 
+    /**
+     * Listener for new reading click button
+     */
     private class AddNewReadingOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -246,6 +276,11 @@ public class MainFragment extends BaseFragment {
                     dialog.dismiss();
                 }
 
+                /**
+                 * Validate information from the dialog about the new reading.
+                 * @param dialog
+                 * @return
+                 */
                 public boolean validateAndSaveFields(MaterialDialog dialog) {
                     Boolean result = true;
                     EditText edtNewReading = null;
@@ -305,6 +340,9 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Listener for new goal click button
+     */
     private class AddNewGoalOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -329,6 +367,11 @@ public class MainFragment extends BaseFragment {
                     dialog.dismiss();
                 }
 
+                /**
+                 * Validate fields of the dialog before saving a new goal
+                 * @param dialog
+                 * @return
+                 */
                 public boolean validateAndSaveFields(MaterialDialog dialog) {
                     Boolean result = true;
                     EditText edtNewGoal = null;

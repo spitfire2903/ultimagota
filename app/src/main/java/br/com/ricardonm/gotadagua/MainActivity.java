@@ -26,6 +26,9 @@ import br.com.ricardonm.gotadagua.fragment.WeatherFragment;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+    /**
+     * Enum for each fragment available
+     */
     public enum FragmentIndex {
         MAIN_FRAGMENT(0),
         BILL_FRAGMENT(1),
@@ -84,6 +87,9 @@ public class MainActivity extends ActionBarActivity
 
     protected ProgressDialog progressDialog = null;
 
+    /**
+     * Show throbbet when something is loading
+     */
     public void showThrobber(){
         this.hideThrobber();
 
@@ -94,6 +100,9 @@ public class MainActivity extends ActionBarActivity
 
     }
 
+    /**
+     * Hide throbbet when something is loading
+     */
     public void hideThrobber(){
         if (this.progressDialog != null){
             if (this.progressDialog.isShowing())
@@ -125,6 +134,9 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.mDrawerToggle.syncState();
     }
 
+    /**
+     * Setups actionbar
+     */
     public void setupUI(){
         ActionBar actionBar = null;
 
@@ -133,6 +145,10 @@ public class MainActivity extends ActionBarActivity
         actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     }
 
+    /**
+     * Overrided method for each navigation drawer item
+     * @param position
+     */
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
@@ -223,6 +239,9 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.mDrawerToggle.onConfigurationChanged(newConfig);
     }*/
 
+    /**
+     * Load user location when the app starts
+     */
     private void loadUserLocation(){
         LocationManager locationManager = null;
         String provider = null;
@@ -278,6 +297,10 @@ public class MainActivity extends ActionBarActivity
         }, null);
     }
 
+    /**
+     * Get the selected fragment
+     * @return fragmentIndex
+     */
     public FragmentIndex getSelectedFragment() {
         return selectedFragment;
     }
@@ -290,6 +313,11 @@ public class MainActivity extends ActionBarActivity
         this.userLocation = userLocation;
     }
 
+    /**
+     * Get title from fragment index.
+     * @param fragmentIdx
+     * @return
+     */
     private String getTitleFromFragmentIndex(FragmentIndex fragmentIdx){
 
         String title = null;

@@ -16,6 +16,11 @@ public class SaveDataTask extends BaseTask<BaseFragment, Void, Void, Void> {
         sugarObj = obj;
     }
 
+    /**
+     * General Async task to save objects
+     * @param params
+     * @return
+     */
     @Override
     protected Void doInBackground(Void... params) {
         sugarObj.save();

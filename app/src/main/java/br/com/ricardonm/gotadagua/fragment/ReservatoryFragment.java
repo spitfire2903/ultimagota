@@ -47,6 +47,10 @@ public class ReservatoryFragment extends BaseFragment {
         return rootView;
     }
 
+    /**
+     * Load the new reservatories data
+     * @param capacities
+     */
     public void refreshReservatoriesData(List<ReservatoryCapacity> capacities){
         this.capacities = capacities;
 
@@ -68,6 +72,12 @@ public class ReservatoryFragment extends BaseFragment {
 
     }
 
+    /**
+     * Creates a new view for each reservatory
+     * @param capacity
+     *      Capacity of each reservatory
+     * @return
+     */
     private ReservatoryView getViewFromCapacity(ReservatoryCapacity capacity){
         ReservatoryView reservatoryView = null;
 
@@ -77,6 +87,9 @@ public class ReservatoryFragment extends BaseFragment {
         return reservatoryView;
     }
 
+    /**
+     * Handler for the http client response
+     */
     private class LoadReservatoriesResponseHandler extends JsonHttpResponseHandler {
 
         @Override
